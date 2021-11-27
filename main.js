@@ -5,7 +5,7 @@ var info = getInformation();
 
 // Display the system information in neofetch style
 printInfoAllAtOnce({
-    "title": true,
+    [info.hostname]: true,
     "OS": `Windows Version ${info.winver}`,
     "Uptime": `${info.uptime} seconds`,
     "CPU": `${info.cpu}`,

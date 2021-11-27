@@ -1,3 +1,4 @@
+const os = require("os");
 // Fetch system information
 
 class Information {
@@ -9,6 +10,7 @@ class Information {
         this.memory = null;
         this.disk = null;
         this.network = null;
+        this.hostname = null;
     }
 }
 
@@ -68,6 +70,7 @@ function getInformation() {
     info.memory = getMemory();
     info.disk = getDisk();
     info.network = getNetwork();
+    info.hostname = os.hostname();
 
     return info;
 }
