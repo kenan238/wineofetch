@@ -4,7 +4,7 @@
   "description": "Neo fetch but for windows.",
   "main": "main.js",
   "scripts": {
-    "test": "start"
+    "start": "node src/main.js"
   },
   "keywords": [
     "Neofetch",
