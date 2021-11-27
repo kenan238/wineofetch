@@ -1,0 +1,19 @@
+{
+  "name": "wineofetch",
+  "version": "1.0.0",
+  "description": "Neo fetch but for windows.",
+  "main": "main.js",
+  "scripts": {
+    "test": "start"
+  },
+  "keywords": [
+    "Neofetch",
+    "kenan238",
+    "Windows"
+  ],
+  "author": "kenan238",
+  "license": "ISC",
+  "dependencies": {
+    "terminal-kit": "^2.2.3"
+  }
+}
