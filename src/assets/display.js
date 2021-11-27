@@ -24,5 +24,6 @@ const printInfoAllAtOnce = (data) => {
 
 module.exports = {
     printInfo,
-    printInfoAllAtOnce
+    printInfoAllAtOnce,
+    term
 };
