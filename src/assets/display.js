@@ -3,13 +3,13 @@ const term = require("terminal-kit").terminal;
 term.clear();
 const printInfo = (title, content, maxchars) => {
     var repeatNum = term.width - maxchars; // calculate how much space we need to move
-    term.magenta(`${" ".repeat(repeatNum)}${title}`)(`: ${content}\n`); // print
+    term.magenta(`${" ".repeat(repeatNum)}${title}`).bold(`: ${content}\n`); // print
 }
 const printTitle = (title, maxchars) => {
     var repeatNum = term.width - maxchars; // calculate how much space we need to move
     var spaces = " ".repeat(repeatNum); // generate spaces
     term.magenta(`${spaces}${title}`)(`\n`); // print
-    term(`${spaces}${"=".repeat(title.length)}\n`) // more printing
+    term.yellow(`${spaces}${"-".repeat(title.length)}\n`) // more printing
 }
 const printInfoAllAtOnce = (data) => {
     const maxchars = Math.max(...Object.keys(data).map(key => {
@@ -51,6 +51,17 @@ const printColors = (maxchars) => {
     term.bgMagenta(content);
     term.bgCyan(content);
     term.inverse.bgRed(content);
+    term.bgGrey(content);
+
+    // Next line
+    term.nextLine();
+    term.move(term.width - maxchars, 0);
+    term.bgBrightRed(content);
+    term.bgBrightGreen(content);
+    term.bgBrightYellow(content);
+    term.bgBrightBlue(content);
+    term.bgBrightMagenta(content);
+    term.bgBrightCyan(content);
 }
 
 module.exports = {
