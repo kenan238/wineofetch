@@ -110,7 +110,7 @@ else {
         }
     }
     if(!recognized_command) {
-        term.green("WINEOFETCH")(" - ").red("by kenan238\n")
+        term.green("WINEOFETCH")(" - ").red("by kenan238")(" - ").blue("https://github.com/kenan238/wineofetch\n")
         term.yellow("  Available command line arguments:\n")
         term.gray("      <nothing> : Display everything\n")
         term.gray("      /systeminfo : Display system info\n")
