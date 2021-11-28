@@ -1,5 +1,10 @@
 const { getInformation } = require("./assets/fetch.js");
-const { printInfoAllAtOnce, printLogo } = require("./assets/display.js")
+const { 
+    printInfoAllAtOnce, 
+    printLogo, 
+    term, 
+    printColors 
+} = require("./assets/display.js")
 
 var info = getInformation();
 var logos = {
@@ -17,7 +22,7 @@ var logos = {
 ################  ################
 ################  ################
 ################  ################`,
-    "windows10": `                   .oodMMMMMMMMMMMMM
+    "windows8_81_10": `                   .oodMMMMMMMMMMMMM
        ..oodMMM  MMMMMMMMMMMMMMMMMMM
  oodMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
  MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
@@ -36,7 +41,7 @@ var logos = {
                       \`\`\`\`^^^^^^MMMM`,
     "windowsold": `
        :tt:::tt333EE3  .et=:!!t3Z3z.,
-       Et:::ztt33EEEL$ @Ee.,      ..,
+       Et:::ztt33EEEL$ @Ee.,..t2355..,
       ;tt:::tt333EE7$ ;EEEEEEttttt33#
      :Et:::zt333EEQ.$ $EEEEEttttt33QL
      it::::tt333EEF$ @EEEEEEttttt33F
@@ -52,7 +57,9 @@ var logos = {
                  "VEzjt:;;z>*`
 }
 
-// Display the system information in neofetch style
+// Display the system information
+term.moveTo(0, 4); // center info
+
 printInfoAllAtOnce({
     [info.hostname]: true,
     "OS": `Windows Version ${info.winver}`,
@@ -63,4 +70,19 @@ printInfoAllAtOnce({
     "Disk": `${info.disk} GB`,
     "Network": `${info.network}`
 });
-printLogo(logos["windows10"])
+
+// Display logo
+
+// Windows 8, 8.1 or 10
+if(
+    info.winver.startsWith("6.2") || // Windows 8 
+    info.winver.startsWith("6.3") || // Windows 8.1
+    info.winver.startsWith("10.0")   // Windows 10
+) {
+    printLogo(logos["windows8_81_10"]);
+}
+
+// Unknown (probably old)
+else printLogo(logos["windowsold"]);
+
+term.nextLine(4); // Leave some space before exiting.

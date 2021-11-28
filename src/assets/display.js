@@ -2,24 +2,25 @@ const term = require("terminal-kit").terminal;
 
 term.clear();
 const printInfo = (title, content, maxchars) => {
-    var repeatNum = term.width - maxchars;
-    term.magenta(`${" ".repeat(repeatNum)}${title}`)(`: ${content}\n`);
+    var repeatNum = term.width - maxchars; // calculate how much space we need to move
+    term.magenta(`${" ".repeat(repeatNum)}${title}`)(`: ${content}\n`); // print
 }
 const printTitle = (title, maxchars) => {
-    var repeatNum = term.width - maxchars;
-    var spaces = " ".repeat(repeatNum);
-    term.magenta(`${spaces}${title}`)(`\n`);
-    term(`${spaces}${"=".repeat(title.length)}\n`)
+    var repeatNum = term.width - maxchars; // calculate how much space we need to move
+    var spaces = " ".repeat(repeatNum); // generate spaces
+    term.magenta(`${spaces}${title}`)(`\n`); // print
+    term(`${spaces}${"=".repeat(title.length)}\n`) // more printing
 }
 const printInfoAllAtOnce = (data) => {
     const maxchars = Math.max(...Object.keys(data).map(key => {
         var value = data[key];
         return value === true ? key.length : `${key}: ${value}`.length;
-    }));
+    })) + 1; // get the longest piece of information + 1
     Object.keys(data).forEach(key => {
         var value = data[key];
         return value === true ? printTitle(key, maxchars) : printInfo(key, value, maxchars);
-    });
+    }); // print
+    printColors(maxchars); // print colors
 };
 // const normalize = (val, max, min) => (val - min) / (max - min);
 const printLogo = async (data) => {
@@ -39,9 +40,23 @@ const printLogo = async (data) => {
         }
     }
 }
+const printColors = (maxchars) => {
+    term.nextLine();
+    term.move(term.width - maxchars, 0);
+    var content = '     ';
+    term.bgRed(content);
+    term.bgGreen(content);
+    term.bgYellow(content);
+    term.bgBlue(content);
+    term.bgMagenta(content);
+    term.bgCyan(content);
+    term.inverse.bgRed(content);
+}
 
 module.exports = {
     printInfo,
     printInfoAllAtOnce,
-    printLogo
+    printLogo,
+    printColors,
+    term
 };
