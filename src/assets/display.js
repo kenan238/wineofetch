@@ -21,9 +21,27 @@ const printInfoAllAtOnce = (data) => {
         return value === true ? printTitle(key, maxchars) : printInfo(key, value, maxchars);
     });
 };
+// const normalize = (val, max, min) => (val - min) / (max - min);
+const printLogo = async (data) => {
+    term.moveTo(0, 0);
+    for (var i = 0; i < data.length; i++) {
+        var char = data[i];
+        // term.moveTo(
+        //     normalize(x, 0, term.width),
+        //     normalize(y, 0, term.height)
+        // );
+        if (char === "\n") {
+            term.nextLine(1);
+        } else {
+            term.green(char);
+            term.right();
+            term.move(-1, 0);
+        }
+    }
+}
 
 module.exports = {
     printInfo,
     printInfoAllAtOnce,
-    term
+    printLogo
 };

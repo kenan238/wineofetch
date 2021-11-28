@@ -1,5 +1,5 @@
 const { getInformation } = require("./assets/fetch.js");
-const { printInfoAllAtOnce, term } = require("./assets/display.js")
+const { printInfoAllAtOnce, printLogo } = require("./assets/display.js")
 
 var info = getInformation();
 var logos = {
@@ -31,9 +31,9 @@ var logos = {
  MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
  MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
  MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-    \`^^^^^^MMMMMMM  MMMMMMMMMMMMMMMMMMM
-          \`\`\`\`^^^^  ^^MMMMMMMMMMMMMMMMM
-                         \`\`\`\`^^^^^^MMMM`,
+ \`^^^^^^MMMMMMM  MMMMMMMMMMMMMMMMMMM
+       \`\`\`\`^^^^  ^^MMMMMMMMMMMMMMMMM
+                      \`\`\`\`^^^^^^MMMM`,
     "windowsold": `
        :tt:::tt333EE3  .et=:!!t3Z3z.,
        Et:::ztt33EEEL$ @Ee.,      ..,
@@ -53,7 +53,6 @@ var logos = {
 }
 
 // Display the system information in neofetch style
-term.green(logos["windowsold"])
 printInfoAllAtOnce({
     [info.hostname]: true,
     "OS": `Windows Version ${info.winver}`,
@@ -64,3 +63,4 @@ printInfoAllAtOnce({
     "Disk": `${info.disk} GB`,
     "Network": `${info.network}`
 });
+printLogo(logos["windows10"])
