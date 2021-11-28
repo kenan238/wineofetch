@@ -1,4 +1,5 @@
 const os = require("os");
+const diskusage = require("diskusage");
 // Fetch system information
 
 class Information {
@@ -50,7 +51,7 @@ function getMemory() {
 }
 
 function getDisk() {
-    return "WIP"
+    return "C:\\";
 }
 
 function getNetwork() {

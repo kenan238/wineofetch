@@ -67,7 +67,7 @@ printInfoAllAtOnce({
     "CPU": `${info.cpu}`,
     "GPU": `${info.gpu}`,
     "Memory": `${info.memory} GB`,
-    "Disk": `${info.disk} GB`,
+    "Disk (C:)": `${info.disk}`,
     "Network": `${info.network}`
 });
 
