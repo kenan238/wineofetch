@@ -15,20 +15,17 @@ class Information {
 }
 
 function getWindowsVersion() {
-    const os = require('os');
     const release = os.release();
     // const version = release.substring(0, release.indexOf('.'));
     return release;
 }
 
 function getUptime() {
-    const os = require('os');
     const uptime = os.uptime();
     return uptime;
 }
 
 function getCpu() {
-    const os = require('os');
     const cpus = os.cpus();
 
     const cpu = cpus[0].model;
@@ -44,7 +41,6 @@ function getGpu() {
 }
 
 function getMemory() {
-    const os = require('os');
     const mem = os.totalmem() / (1024 * 1024 * 1024);
     return mem;
 }
@@ -54,7 +50,6 @@ function getDisk() {
 }
 
 function getNetwork() {
-    const os = require('os');
     const interfaces = os.networkInterfaces();
     const network = interfaces[Object.keys(interfaces)[0]][0].address;
     return network;
